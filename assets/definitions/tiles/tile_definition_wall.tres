@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="TileDefinition" format=3 uid="uid://c5hwknb7mdcnq"]
+
+[ext_resource type="Script" uid="uid://dvvxqu7an8faf" path="res://src/Map/tile_definition.gd" id="1_g8l3i"]
+[ext_resource type="Texture2D" uid="uid://bpttfb5fr1m3g" path="res://assets/images/kenney_1-bit-pack/monochrome_packed.png" id="2_7vnfb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lls8w"]
+atlas = ExtResource("2_7vnfb")
+region = Rect2(32, 0, 16, 16)
+
+[resource]
+script = ExtResource("1_g8l3i")
+texture = SubResource("AtlasTexture_lls8w")
+color_lit = Color(1, 0.49803922, 0, 1)
+color_dark = Color(0.49803922, 0.24705882, 0, 1)
+is_walkable = false
+is_transparent = false
+metadata/_custom_type_script = "uid://dvvxqu7an8faf"
