@@ -6,7 +6,6 @@ var player_grid_pos:= Vector2i.ZERO
 
 @onready var player: Entity
 @onready var event_handler: EventHandler = $EventHandler
-@onready var entities: Node2D = $Entities
 @onready var map: Map = $Map
 @onready var camera: Camera2D = $Camera2D
 
@@ -14,9 +13,13 @@ func _ready() -> void:
 	player = Entity.new(Vector2i.ZERO, player_definition)
 	remove_child(camera)
 	player.add_child(camera)
-	entities.add_child(player)
 	map.generate(player)
 	map.update_fov(player.grid_position)
+
+func _handle_enemy_turns() -> void:
+	for entity in get_map_data().entities:
+		if entity != player:
+			print("The %s wonders when it will get to take a real turn." % entity.get_entity_name())
 
 func get_map_data() -> MapData:
 	return map.map_data
@@ -26,5 +29,6 @@ func _physics_process(_delta: float) -> void:
 	if action:
 		var previous_player_position: Vector2i = player.grid_position
 		action.perform(self, player)
+		_handle_enemy_turns()
 		if player.grid_position != previous_player_position:
 			map.update_fov(player.grid_position)

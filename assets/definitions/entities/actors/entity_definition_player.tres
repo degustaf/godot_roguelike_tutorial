@@ -8,6 +8,7 @@ atlas = ExtResource("2_js7ka")
 region = Rect2(400, 0, 16, 16)
 
 [resource]
+resource_name = "Player"
 script = ExtResource("1_j7dal")
 texture = SubResource("AtlasTexture_j7dal")
 metadata/_custom_type_script = "uid://bevae3nudr3pl"
