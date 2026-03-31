@@ -21,10 +21,10 @@ var type: EntityType:
 		type = value
 		z_index = value
 
-func _init(map_data:MapData, start_position: Vector2i, entity_definition: EntityDefinition) -> void:
+func _init(map:MapData, start_position: Vector2i, entity_definition: EntityDefinition) -> void:
 	centered = false
 	grid_position = start_position
-	self.map_data = map_data
+	map_data = map
 	set_entity_type(entity_definition)
 
 func move(move_offset: Vector2i) -> void:
