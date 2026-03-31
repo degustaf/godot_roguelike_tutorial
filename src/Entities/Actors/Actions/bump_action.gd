@@ -1,10 +1,10 @@
 class_name BumpAction
 extends ActionWithDirection
 
-func perform(game: Game, entity: Entity) -> void:
-	var destination: Vector2i = entity.grid_position + offset
+func perform() -> void:
+	var destination: Vector2i = get_destination()
 	
-	if game.get_map_data().get_blocking_entity_at_location(destination):
-		MeleeAction.new(offset.x, offset.y).perform(game, entity)
+	if get_blocking_entity_at_destination():
+		MeleeAction.new(entity, offset.x, offset.y).perform()
 	else:
-		MovementAction.new(offset.x, offset.y).perform(game, entity)
+		MovementAction.new(entity, offset.x, offset.y).perform()

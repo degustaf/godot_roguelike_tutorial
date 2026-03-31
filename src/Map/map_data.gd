@@ -10,10 +10,12 @@ var width: int
 var height: int
 var tiles: Array[Tile]
 var entities: Array[Entity]
+var player: Entity
 
-func _init(map_width: int, map_height: int) -> void:
+func _init(map_width: int, map_height: int, player: Entity) -> void:
 	width = map_width
 	height = map_height
+	self.player = player
 	entities = []
 	_setup_tiles()
 
