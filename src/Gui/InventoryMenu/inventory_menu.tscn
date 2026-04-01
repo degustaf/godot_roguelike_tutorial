@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://csw26xbix5c6e"]
+
+[ext_resource type="Script" uid="uid://c3166vy7rwx1v" path="res://src/Gui/InventoryMenu/inventory_menu.gd" id="1_h5hmy"]
+[ext_resource type="Texture2D" uid="uid://bpttfb5fr1m3g" path="res://assets/images/kenney_1-bit-pack/monochrome_packed.png" id="1_lxxu1"]
+[ext_resource type="FontFile" uid="uid://dxm081gger0gl" path="res://assets/fonts/kenney_kenney-fonts/Fonts/Kenney Pixel.ttf" id="2_h5hmy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0qd4d"]
+atlas = ExtResource("1_lxxu1")
+region = Rect2(768, 336, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nakgi"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+texture = SubResource("AtlasTexture_0qd4d")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_mx8kw"]
+font = ExtResource("2_h5hmy")
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_tvd1a"]
+color = Color(1, 1, 1, 1)
+
+[node name="InventoryMenu" type="CanvasLayer" unique_id=893529363]
+script = ExtResource("1_h5hmy")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=2088139076]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer" unique_id=1655146206]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_nakgi")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer" unique_id=1859354784]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=815455450]
+unique_name_in_owner = true
+layout_mode = 2
+label_settings = SubResource("LabelSettings_mx8kw")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=2124441420]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_tvd1a")
+
+[node name="InventoryList" type="VBoxContainer" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=1316581288]
+unique_name_in_owner = true
+layout_mode = 2

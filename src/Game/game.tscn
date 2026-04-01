@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://bjy3tde6l3b58" path="res://src/Map/dungeon_generator.gd" id="4_bob6j"]
 [ext_resource type="Script" uid="uid://cw6w8ip3cq47i" path="res://src/Map/field_of_view.gd" id="5_3s8ir"]
 [ext_resource type="Script" uid="uid://v41moogu8uvr" path="res://src/Game/EventHandlers/history_viewer_input_handler.gd" id="5_ysswf"]
+[ext_resource type="Script" uid="uid://cyopqlb5ptmij" path="res://src/Game/EventHandlers/base_input_handler.gd" id="6_x8pff"]
 [ext_resource type="Texture2D" uid="uid://bpttfb5fr1m3g" path="res://assets/images/kenney_1-bit-pack/monochrome_packed.png" id="8_lx5th"]
 [ext_resource type="Script" uid="uid://d8tk3l5feetu" path="res://src/Gui/mouseover_checker.gd" id="9_4te78"]
 [ext_resource type="Script" uid="uid://cwqxyqd6krblx" path="res://src/Gui/hp_display.gd" id="9_mkl7w"]
@@ -67,8 +68,10 @@ stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="VBoxContainer/SubViewportContainer" unique_id=304445992]
 disable_3d = true
+handle_input_locally = false
 canvas_item_default_texture_filter = 0
 size = Vector2i(1152, 536)
+render_target_update_mode = 4
 
 [node name="Game" type="Node2D" parent="VBoxContainer/SubViewportContainer/SubViewport" unique_id=30654713]
 script = ExtResource("1_sag4g")
@@ -86,6 +89,9 @@ script = ExtResource("2_3s8ir")
 script = ExtResource("5_ysswf")
 message_panel_path = NodePath("../../../../../InfoBar/MessagesPanel")
 message_log_path = NodePath("../../../../../InfoBar/MessagesPanel/MessageLog")
+
+[node name="DummyInputHandler" type="Node" parent="VBoxContainer/SubViewportContainer/SubViewport/Game/InputHandler" unique_id=1449252286]
+script = ExtResource("6_x8pff")
 
 [node name="Map" type="Node2D" parent="VBoxContainer/SubViewportContainer/SubViewport/Game" unique_id=858294122]
 script = ExtResource("3_sag4g")
