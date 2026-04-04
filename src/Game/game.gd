@@ -11,8 +11,8 @@ var player_grid_pos:= Vector2i.ZERO
 @onready var map: Map = $Map
 @onready var camera: Camera2D = $Camera2D
 
-func _ready() -> void:
-	player = Entity.new(null, Vector2i.ZERO, player_definition)
+func new_game() -> void:
+	player = Entity.new(null, Vector2i.ZERO, "player")
 	player_created.emit(player)
 	remove_child(camera)
 	player.add_child(camera)
@@ -23,6 +23,21 @@ func _ready() -> void:
 		GameColors.WELCOME_TEXT
 	).call_deferred()
 	camera.make_current.call_deferred()
+
+func load_game() -> bool:
+	player = Entity.new(null, Vector2i.ZERO, "player")
+	remove_child(camera)
+	player.add_child(camera)
+	if not map.load_game(player):
+		return false
+	player_created.emit(player)
+	map.update_fov(player.grid_position)
+	MessageLog.send_message.bind(
+		"Welcome back, adventurer!",
+		GameColors.WELCOME_TEXT
+	).call_deferred()
+	camera.make_current.call_deferred()
+	return true
 
 func _handle_enemy_turns() -> void:
 	for entity in get_map_data().get_actors():

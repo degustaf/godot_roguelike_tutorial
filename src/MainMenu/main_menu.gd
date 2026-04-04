@@ -8,8 +8,7 @@ signal game_requested(load: bool)
 
 func _ready() -> void:
 	first_button.grab_focus()
-	var has_save_file := FileAccess.file_exists("user://save_game.dat")
-	load_button.disabled = has_save_file
+	load_button.disabled = not FileAccess.file_exists("user://save_game.dat")
 
 func _on_new_button_pressed():
 	game_requested.emit(false)

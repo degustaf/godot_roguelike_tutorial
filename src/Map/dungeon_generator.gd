@@ -14,15 +14,6 @@ extends Node
 @export var max_monsters_per_room: int = 2
 @export var max_items_per_room: int = 2
 
-const entity_types = {
-	"orc": preload("res://assets/definitions/entities/actors/entity_definition_orcs.tres"),
-	"troll": preload("res://assets/definitions/entities/actors/entity_definition_troll.tres"),
-	"health_potion": preload("res://assets/definitions/entities/items/health_potion_definition.tres"),
-	"lightning_scroll": preload("res://assets/definitions/entities/items/lightning_scroll_definition.tres"),
-	"confusion_scroll": preload("res://assets/definitions/entities/items/consusion_scroll_definition.tres"),
-	"fireball_scroll": preload("res://assets/definitions/entities/items/fireball_scroll_definition.tres")
-}
-
 var _rng := RandomNumberGenerator.new()
 
 func _ready() -> void:
@@ -31,7 +22,7 @@ func _ready() -> void:
 func _carve_tile(dungeon: MapData, x: int, y: int) -> void:
 	var tile_position = Vector2i(x,y)
 	var tile: Tile = dungeon.get_tile(tile_position)
-	tile.set_tile_type(dungeon.tile_types.floor)
+	tile.set_tile_type("floor")
 
 func _carve_room(dungeon: MapData, room: Rect2i) -> void:
 	var inner: Rect2i = room.grow(-1)
@@ -77,9 +68,9 @@ func _place_entities(dungeon: MapData, room: Rect2i) -> void:
 			var item_chance := _rng.randf()
 			var new_entity: Entity
 			if item_chance < 0.8:
-				new_entity = Entity.new(dungeon, new_entity_position, entity_types.orc)
+				new_entity = Entity.new(dungeon, new_entity_position, "orc")
 			else:
-				new_entity = Entity.new(dungeon, new_entity_position, entity_types.troll)
+				new_entity = Entity.new(dungeon, new_entity_position, "troll")
 			dungeon.entities.append(new_entity)
 	for _i in number_of_items:
 		var x: int = _rng.randi_range(room.position.x+1, room.end.x-1)
@@ -95,13 +86,13 @@ func _place_entities(dungeon: MapData, room: Rect2i) -> void:
 			var item_chance := _rng.randf()
 			var new_entity: Entity
 			if item_chance < 0.7:
-				new_entity = Entity.new(dungeon, new_entity_position, entity_types.health_potion)
+				new_entity = Entity.new(dungeon, new_entity_position, "health_potion")
 			elif item_chance < 0.8:
-				new_entity = Entity.new(dungeon, new_entity_position, entity_types.fireball_scroll)
+				new_entity = Entity.new(dungeon, new_entity_position, "fireball_scroll")
 			elif item_chance < 0.9:
-				new_entity = Entity.new(dungeon, new_entity_position, entity_types.confusion_scroll)
+				new_entity = Entity.new(dungeon, new_entity_position, "confusion_scroll")
 			else:
-				new_entity = Entity.new(dungeon, new_entity_position, entity_types.lightning_scroll)
+				new_entity = Entity.new(dungeon, new_entity_position, "lightning_scroll")
 			dungeon.entities.append(new_entity)
 
 func generate_dungeon(player: Entity) -> MapData:
