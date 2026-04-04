@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="RoguelikeTutorial"
-run/main_scene="uid://c8s0u8pye0l2y"
+run/main_scene="uid://crp8ekdr86wf8"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
