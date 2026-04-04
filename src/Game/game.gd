@@ -22,6 +22,7 @@ func _ready() -> void:
 		"Hello and welcome, adventurer, to yet another dungeon!",
 		GameColors.WELCOME_TEXT
 	).call_deferred()
+	camera.make_current.call_deferred()
 
 func _handle_enemy_turns() -> void:
 	for entity in get_map_data().get_actors():

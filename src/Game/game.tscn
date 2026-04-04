@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://cwqxyqd6krblx" path="res://src/Gui/hp_display.gd" id="9_mkl7w"]
 [ext_resource type="FontFile" uid="uid://dxm081gger0gl" path="res://assets/fonts/kenney_kenney-fonts/Fonts/Kenney Pixel.ttf" id="10_drysr"]
 [ext_resource type="Script" uid="uid://cnsla48in8ovf" path="res://src/Gui/message_log.gd" id="11_drysr"]
+[ext_resource type="PackedScene" uid="uid://dhb3ceeuhbvv8" path="res://src/Gui/Reticle/reticle.tscn" id="11_muykf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0qd4d"]
 atlas = ExtResource("8_lx5th")
@@ -79,8 +80,9 @@ script = ExtResource("1_sag4g")
 [node name="InputHandler" type="Node" parent="VBoxContainer/SubViewportContainer/SubViewport/Game" unique_id=926553557]
 script = ExtResource("2_le6wr")
 
-[node name="MainGameInputHandler" type="Node" parent="VBoxContainer/SubViewportContainer/SubViewport/Game/InputHandler" unique_id=1969140210]
+[node name="MainGameInputHandler" type="Node" parent="VBoxContainer/SubViewportContainer/SubViewport/Game/InputHandler" unique_id=1969140210 node_paths=PackedStringArray("reticle")]
 script = ExtResource("2_7m6cs")
+reticle = NodePath("../../Map/Reticle")
 
 [node name="GameOverInputHandler" type="Node" parent="VBoxContainer/SubViewportContainer/SubViewport/Game/InputHandler" unique_id=1845402449]
 script = ExtResource("2_3s8ir")
@@ -108,6 +110,8 @@ script = ExtResource("5_3s8ir")
 
 [node name="MouseoverChecker" type="Node2D" parent="VBoxContainer/SubViewportContainer/SubViewport/Game/Map" unique_id=321105645]
 script = ExtResource("9_4te78")
+
+[node name="Reticle" parent="VBoxContainer/SubViewportContainer/SubViewport/Game/Map" unique_id=579578248 instance=ExtResource("11_muykf")]
 
 [node name="Camera2D" type="Camera2D" parent="VBoxContainer/SubViewportContainer/SubViewport/Game" unique_id=226475968]
 zoom = Vector2(2, 2)
