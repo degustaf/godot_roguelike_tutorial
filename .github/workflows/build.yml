@@ -7,7 +7,7 @@ on:
 jobs:
   export_game:
     runs-on: ubuntu-latest
-    premissions:
+    permissions:
       contents: write
     name: Export Game
     steps:
