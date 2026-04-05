@@ -4,12 +4,18 @@
 [ext_resource type="Script" uid="uid://dksauilmt8n00" path="res://src/Entities/Actors/Components/ComponentDefinitions/fighter_component_definition.gd" id="1_ngb25"]
 [ext_resource type="Script" uid="uid://bevae3nudr3pl" path="res://src/Entities/entity_definition.gd" id="1_q245d"]
 [ext_resource type="Texture2D" uid="uid://bpttfb5fr1m3g" path="res://assets/images/kenney_1-bit-pack/monochrome_packed.png" id="2_uf2xm"]
+[ext_resource type="Script" uid="uid://cqjdc3xqcou66" path="res://src/Entities/Actors/Components/ComponentDefinitions/level_component_definition.gd" id="3_hwa2x"]
 
 [sub_resource type="Resource" id="Resource_280ed"]
 script = ExtResource("1_ngb25")
 max_hp = 10
 power = 3
 metadata/_custom_type_script = "uid://dksauilmt8n00"
+
+[sub_resource type="Resource" id="Resource_0kb2h"]
+script = ExtResource("3_hwa2x")
+xp_given = 35
+metadata/_custom_type_script = "uid://cqjdc3xqcou66"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ngb25"]
 atlas = ExtResource("2_uf2xm")
@@ -23,4 +29,5 @@ color = Color(0.24705882, 0.49803922, 0.24705882, 1)
 is_blocking_movement = null
 fighter_definition = SubResource("Resource_280ed")
 ai_type = 1
+level_info = SubResource("Resource_0kb2h")
 metadata/_custom_type_script = "uid://bevae3nudr3pl"

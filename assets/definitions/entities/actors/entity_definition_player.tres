@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://bevae3nudr3pl" path="res://src/Entities/entity_definition.gd" id="1_j7dal"]
 [ext_resource type="Script" uid="uid://dksauilmt8n00" path="res://src/Entities/Actors/Components/ComponentDefinitions/fighter_component_definition.gd" id="1_qkhq4"]
 [ext_resource type="Texture2D" uid="uid://bpttfb5fr1m3g" path="res://assets/images/kenney_1-bit-pack/monochrome_packed.png" id="2_js7ka"]
+[ext_resource type="Script" uid="uid://cqjdc3xqcou66" path="res://src/Entities/Actors/Components/ComponentDefinitions/level_component_definition.gd" id="3_iqfcy"]
 
 [sub_resource type="Resource" id="Resource_eqybp"]
 script = ExtResource("1_qkhq4")
@@ -11,6 +12,11 @@ max_hp = 30
 power = 5
 defense = 2
 metadata/_custom_type_script = "uid://dksauilmt8n00"
+
+[sub_resource type="Resource" id="Resource_b0myl"]
+script = ExtResource("3_iqfcy")
+level_up_base = 200
+metadata/_custom_type_script = "uid://cqjdc3xqcou66"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j7dal"]
 atlas = ExtResource("2_js7ka")
@@ -24,4 +30,5 @@ texture = SubResource("AtlasTexture_j7dal")
 fighter_definition = SubResource("Resource_eqybp")
 ai_type = 1
 inventory_capacity = 26
+level_info = SubResource("Resource_b0myl")
 metadata/_custom_type_script = "uid://bevae3nudr3pl"
