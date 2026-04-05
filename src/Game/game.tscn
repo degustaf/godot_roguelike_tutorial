@@ -16,6 +16,8 @@
 [ext_resource type="FontFile" uid="uid://dxm081gger0gl" path="res://assets/fonts/kenney_kenney-fonts/Fonts/Kenney Pixel.ttf" id="10_drysr"]
 [ext_resource type="Script" uid="uid://cnsla48in8ovf" path="res://src/Gui/message_log.gd" id="11_drysr"]
 [ext_resource type="PackedScene" uid="uid://dhb3ceeuhbvv8" path="res://src/Gui/Reticle/reticle.tscn" id="11_muykf"]
+[ext_resource type="FontFile" uid="uid://brqt88ucma8f5" path="res://assets/fonts/kenney_kenney-fonts/Fonts/Kenney Pixel Square.ttf" id="16_lr6s2"]
+[ext_resource type="Script" uid="uid://dtwtjdrcqetfh" path="res://src/Game/dungeon_floor_label.gd" id="17_nwlnk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0qd4d"]
 atlas = ExtResource("8_lx5th")
@@ -42,6 +44,9 @@ bg_color = Color(0, 0.49803922, 0, 1)
 font = ExtResource("10_drysr")
 outline_size = 4
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_nwlnk"]
+font = ExtResource("16_lr6s2")
 
 [sub_resource type="LabelSettings" id="LabelSettings_4te78"]
 font = ExtResource("10_drysr")
@@ -151,6 +156,11 @@ label_settings = SubResource("LabelSettings_ysswf")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="DungeonFloorLabel" type="Label" parent="VBoxContainer/InfoBar/StatsPanel/VBoxContainer" unique_id=735497455]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_nwlnk")
+script = ExtResource("17_nwlnk")
+
 [node name="MouseoverLabel" type="Label" parent="VBoxContainer/InfoBar/StatsPanel/VBoxContainer" unique_id=1126231478]
 layout_mode = 2
 size_flags_vertical = 10
@@ -174,4 +184,5 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [connection signal="player_created" from="VBoxContainer/SubViewportContainer/SubViewport/Game" to="VBoxContainer/InfoBar/StatsPanel/VBoxContainer/HpDisplay" method="initialize"]
+[connection signal="dungeon_floor_changed" from="VBoxContainer/SubViewportContainer/SubViewport/Game/Map" to="VBoxContainer/InfoBar/StatsPanel/VBoxContainer/DungeonFloorLabel" method="set_dungeon_floor"]
 [connection signal="entity_focused" from="VBoxContainer/SubViewportContainer/SubViewport/Game/Map/MouseoverChecker" to="VBoxContainer/InfoBar/StatsPanel/VBoxContainer/MouseoverLabel" method="set_text"]

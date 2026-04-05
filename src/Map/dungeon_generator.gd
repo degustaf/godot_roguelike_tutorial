@@ -95,22 +95,24 @@ func _place_entities(dungeon: MapData, room: Rect2i) -> void:
 				new_entity = Entity.new(dungeon, new_entity_position, "lightning_scroll")
 			dungeon.entities.append(new_entity)
 
-func generate_dungeon(player: Entity) -> MapData:
+func generate_dungeon(player: Entity, current_floor: int) -> MapData:
 	var dungeon := MapData.new(map_width, map_height, player)
+	dungeon.current_floor = current_floor
 	dungeon.entities.append(player)
 	
 	var rooms: Array[Rect2i] = []
+	var center_last_room: Vector2i
 	
 	for _try_rooms in max_rooms:
-		var room_width: int = _rng.randi_range(room_min_size, room_max_size)
-		var room_height: int = _rng.randi_range(room_min_size, room_max_size)
+		var room_width := _rng.randi_range(room_min_size, room_max_size)
+		var room_height := _rng.randi_range(room_min_size, room_max_size)
 		
-		var x: int = _rng.randi_range(0, dungeon.width - room_width - 1)
-		var y: int = _rng.randi_range(0, dungeon.height - room_height - 1)
+		var x := _rng.randi_range(0, dungeon.width - room_width - 1)
+		var y := _rng.randi_range(0, dungeon.height - room_height - 1)
 		
 		var new_room = Rect2i(x,y,room_width,room_height)
 		
-		var has_intersection: bool = false
+		var has_intersection := false
 		for room in rooms:
 			if room.intersects(new_room.grow(-1)):
 				has_intersection = true
@@ -119,6 +121,7 @@ func generate_dungeon(player: Entity) -> MapData:
 			continue
 		
 		_carve_room(dungeon, new_room)
+		center_last_room = new_room.get_center()
 		
 		if rooms.is_empty():
 			player.grid_position = new_room.get_center()
@@ -128,6 +131,10 @@ func generate_dungeon(player: Entity) -> MapData:
 		
 		_place_entities(dungeon, new_room)
 		rooms.append(new_room)
+	
+	dungeon.down_stairs_location = center_last_room
+	var down_tile := dungeon.get_tile(center_last_room)
+	down_tile.set_tile_type("down_stairs")
 	
 	dungeon.setup_pathfinding()
 	return dungeon

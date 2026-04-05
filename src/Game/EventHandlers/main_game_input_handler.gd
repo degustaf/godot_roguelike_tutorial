@@ -42,6 +42,9 @@ func get_action(player: Entity) -> Action:
 	if Input.is_action_just_pressed("look"):
 		await get_grid_position(player, 0)
 	
+	if Input.is_action_just_pressed("descend"):
+		action = TakeStairsAction.new(player)
+	
 	if Input.is_action_just_pressed("quit"):
 		action = EscapeAction.new(player)
 	
@@ -58,7 +61,7 @@ func get_item(window_title: String, inventory: InventoryComponent, evaluate_for_
 	get_parent().transition_to(InputHandler.InputHandlers.DUMMY)
 	var selected_item: Entity = await inventory_menu.item_selected
 	var has_item := selected_item != null
-	var needs_targeting := has_item and selected_item.consumable_component and selected_item.consumable_component.get_targeting_radius() == -1
+	var needs_targeting := has_item and selected_item.consumable_component and selected_item.consumable_component.get_targeting_radius() != -1
 	if not evaluate_for_next_loop or not has_item or not needs_targeting:
 		await get_tree().physics_frame
 		get_parent().call_deferred("transition_to", InputHandler.InputHandlers.MAIN_GAME)
