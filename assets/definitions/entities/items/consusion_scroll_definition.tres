@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://5fcnag7blk8j" path="res://src/Entities/Actors/Components/ComponentDefinitions/confusion_consumable_component_definition.gd" id="1_uub8k"]
 [ext_resource type="Texture2D" uid="uid://bpttfb5fr1m3g" path="res://assets/images/kenney_1-bit-pack/monochrome_packed.png" id="2_7e6o6"]
 
-[sub_resource type="Resource" id="Resource_vo46u"]
+[sub_resource type="Resource" id="Resource_uub8k"]
 script = ExtResource("1_uub8k")
 number_of_turns = 10
 metadata/_custom_type_script = "uid://5fcnag7blk8j"
@@ -20,5 +20,5 @@ texture = SubResource("AtlasTexture_uub8k")
 color = Color(0.8117647, 0.24705882, 1, 1)
 is_blocking_movement = false
 type = 1
-consumable_definition = SubResource("Resource_vo46u")
+item_definition = SubResource("Resource_uub8k")
 metadata/_custom_type_script = "uid://bevae3nudr3pl"

@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://bevae3nudr3pl" path="res://src/Entities/entity_definition.gd" id="1_s1ujj"]
 [ext_resource type="Texture2D" uid="uid://bpttfb5fr1m3g" path="res://assets/images/kenney_1-bit-pack/monochrome_packed.png" id="3_eaite"]
 
-[sub_resource type="Resource" id="Resource_rs25l"]
+[sub_resource type="Resource" id="Resource_62n8f"]
 script = ExtResource("1_62n8f")
 damage = 12
 radius = 3
@@ -21,5 +21,5 @@ texture = SubResource("AtlasTexture_3v7c8")
 color = Color(1, 0, 0, 1)
 is_blocking_movement = false
 type = 1
-consumable_definition = SubResource("Resource_rs25l")
+item_definition = SubResource("Resource_62n8f")
 metadata/_custom_type_script = "uid://bevae3nudr3pl"

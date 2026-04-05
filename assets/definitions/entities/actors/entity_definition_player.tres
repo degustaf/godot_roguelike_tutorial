@@ -31,4 +31,5 @@ fighter_definition = SubResource("Resource_eqybp")
 ai_type = 1
 inventory_capacity = 26
 level_info = SubResource("Resource_b0myl")
+has_equipment = true
 metadata/_custom_type_script = "uid://bevae3nudr3pl"
